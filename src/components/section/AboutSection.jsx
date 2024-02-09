@@ -30,9 +30,9 @@ const AboutSection = () => {
       <div className="lg:w-1/2 w-full h-[50vh] flex lg:h-full relative items-center justify-center gap-4 lg:py-5 ">
         <div className=" absolute  -z-10 top-0 left-0 w-1/2 aspect-square rounded-full bg-neutral"></div>
         <div className=" absolute  -z-10 bottom-0 right-0 w-2/5 aspect-square rounded-full bg-neutral"></div>
-        <div style={backgroundStyle1} className="w-[25%] hover:scale-110 duration-300 ease-in-out h-3/5 bg-base-100 rounded-3xl"></div>
-        <div style={backgroundStyle3} className="w-[25%] hover:scale-110 duration-300 ease-in-out h-3/4 bg-base-100 rounded-3xl"></div>
-        <div style={backgroundStyle2} className="w-[25%] hover:scale-110 duration-300 ease-in-out h-3/5 bg-base-100 rounded-3xl"></div>
+        <img  loading='lazy' src={AboutImage1} className="w-[25%] hover:scale-110 duration-300 ease-in-out h-3/5 bg-base-100 rounded-3xl"></img>
+        <img loading='lazy' src={AboutImage3} className="w-[25%] hover:scale-110 duration-300 ease-in-out h-3/4 bg-base-100 rounded-3xl"></img>
+        <img loading='lazy' src={AboutImage2} className="w-[25%] hover:scale-110 duration-300 ease-in-out h-3/5 bg-base-100 rounded-3xl"></img>
       </div>
       <div className="lg:w-1/2 relative px-5 ">
 
