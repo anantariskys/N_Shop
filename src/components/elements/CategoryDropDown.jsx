@@ -20,7 +20,7 @@ const CategoryDropDown = () => {
   };
 
   return (
-    <div className="dropdown dropdown-hover">
+    <div className="dropdown dropdown-hover font-Poppins">
       <div tabIndex={0} role="button" className="text-xl lg:block hidden  font-semibold">
         Kategori
       </div>

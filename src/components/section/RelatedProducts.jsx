@@ -9,6 +9,7 @@ const RelatedProducts = ({ category,id,setBuyStatus }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true)
     fetchData();
 
   }, [category,id]);
@@ -20,6 +21,7 @@ const RelatedProducts = ({ category,id,setBuyStatus }) => {
       setData(filteredData);
       setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -29,6 +31,14 @@ const RelatedProducts = ({ category,id,setBuyStatus }) => {
   return (
     <>
     <h1 className="text-3xl font-bold ms-5 mb-2">Related Products</h1>
+    {
+      isLoading?(
+        <div className="h-96 flex justify-center items-center">
+          <span className="loading loading-spinner loading-lg text-neutral"></span>
+        </div>
+
+      ):(
+
     <Splide 
       options={{
           perPage:5,
@@ -51,6 +61,8 @@ const RelatedProducts = ({ category,id,setBuyStatus }) => {
         </SplideSlide>
       ))}
     </Splide>
+      )
+    }
     </>
   );
 };

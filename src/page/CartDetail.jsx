@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Alert from "../components/elements/Alert.";
 import CardCart from "../components/fragments/CardCart";
 import TableItem from "../components/fragments/TableItem";
 import {useAuth} from '../hooks/useAuth';
@@ -35,14 +36,9 @@ const CartDetail = () => {
   };
 
   return (
-    <div className="w-full px-4 md:px-10 bg-base-300 py-5 lg:pt-10">
+    <div className="w-full px-4 md:px-10 bg-base-300 py-5 lg:pt-10 font-Poppins">
       {isSuccess && (
-                <div role="alert" className="alert alert-success fixed top-22 z-10 w-1/4 left-1/2 -translate-x-1/2 ">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>Your purchase has been confirmed!</span>
-                </div>
+                <Alert color={'success'}  message={'Your purchase has been confirmed!'} />
               )}
       <h1 className="text-3xl font-bold lg:mb-3">Your Cart</h1>
       <div className="flex flex-col-reverse lg:flex-row justify-between">
@@ -50,7 +46,7 @@ const CartDetail = () => {
           {cart.length > 0 ? (
             cart.map((item, index) => <CardCart key={index} id={item.id} quantity={item.quantity} />)
           ) : (
-            <p className="text-2xl font-bold mt-5">Cart is empty!!! <Link className=" text-warning" to={'/'}> Go shopping? </Link></p>
+            <p className="text-2xl  mt-5 text-center">Cart is empty!!! <Link className=" text-warning font-bold" to={'/'}> Go shopping? </Link></p>
           )}
         </div>
 
@@ -81,9 +77,8 @@ const CartDetail = () => {
                 <p>Total :</p>
                 <p>${total.toFixed(2)}</p>
               </div>
-              <div className="flex justify-between">
-                <button className="btn">Clear</button>
-                <button onClick={purchaseCart} className="btn">Purchase</button>
+              <div className="flex justify-end">
+                <button onClick={purchaseCart} className="btn btn-sm md:btn-md btn-neutral">Purchase</button>
               </div>
               
             </div>

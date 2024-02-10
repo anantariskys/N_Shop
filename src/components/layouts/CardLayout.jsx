@@ -2,7 +2,7 @@ import React from 'react'
 
 const CardLayout = ({children}) => {
   return (
-    <div className='flex w-full gap-5 flex-wrap justify-center items-start '>{children }</div>
+    <div className='flex w-full py-3 md:py-8 gap-5 flex-wrap justify-center items-start '>{children }</div>
   )
 }
 

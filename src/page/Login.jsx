@@ -40,14 +40,6 @@ const Login = () => {
           <div className="card shadow-2xl bg-base-100 w-full max-w-md">
             <form method="post" className="card-body" onSubmit={handleLogin}>
               <h3 className='text-center font-bold text-xl'>Login</h3>
-              {/* {isSuccess && (
-                <div role="alert" className="alert alert-success fixed top-20 z-10 w-1/4 left-1/2 -translate-x-1/2 ">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>Your purchase has been confirmed!</span>
-                </div>
-              )} */}
               <div className="form-control">
                 <label htmlFor="username" className="label">
                   <span className="label-text">Username</span>

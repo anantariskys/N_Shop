@@ -23,7 +23,7 @@ const CardCart = ({ id, quantity }) => {
 
  
   return (
-    <div className="card card-side h-64  p-3 bg-base-100 shadow-xl">
+    <div className="card card-side font-Poppins h-64  p-3 bg-base-100 shadow-xl">
       {isLoading ? (
        <div className="loading loading-spinner loading-md mx-auto"></div>
       ) : (

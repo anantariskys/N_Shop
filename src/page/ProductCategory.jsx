@@ -1,20 +1,23 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Alert from "../components/elements/Alert.";
 import Card from "../components/fragments/CardProduct";
 import CardLayout from "../components/layouts/CardLayout";
-
 const ProductCategory = () => {
   const [data, setData] = useState([]);
   const [buyStatus, setBuyStatus] = useState({
     status: false,
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(true);
   const { category } = useParams();
 
   useEffect(() => {
+    setIsLoading(true);
     fetchData();
   }, [category]);
 
@@ -23,7 +26,9 @@ const ProductCategory = () => {
       const response = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
 
       setData(response.data);
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
     }
   };
@@ -37,14 +42,7 @@ const ProductCategory = () => {
 
   return (
     <div className="bg-neutral  ">
-      {buyStatus.status && (
-        <div role="alert" className="alert fixed top-22 z-10 w-1/4 left-1/2 -translate-x-1/2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-          <span>{buyStatus.message}</span>
-        </div>
-      )}
+      {buyStatus.status && <Alert message={buyStatus.message} />}
       <div className="hero min-h-screen" style={backgroundImageStyle}>
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
@@ -53,11 +51,28 @@ const ProductCategory = () => {
           </div>
         </div>
       </div>
-      <CardLayout>
-        {data.map((item) => (
-          <Card key={item.id} title={item.title} setBuyStatus={setBuyStatus} desc={item.description} id={item.id} src={item.image} price={item.price} />
-        ))}
-      </CardLayout>
+      <motion.h2
+       initial={{
+        opacity:0
+    }}
+    animate={{
+        opacity:1
+    }}
+    transition={{
+        duration:1
+    }}
+      className="lg:text-7xl text-5xl text-center text-neutral-content py-2">Product</motion.h2>
+      {isLoading ? (
+        <div className="h-screen flex justify-center items-center">
+          <span className="loading loading-spinner loading-lg text-neutral-content"></span>
+        </div>
+      ) : (
+        <CardLayout>
+          {data.map((item) => (
+            <Card key={item.id} title={item.title} setBuyStatus={setBuyStatus} desc={item.description} id={item.id} src={item.image} price={item.price} />
+          ))}
+        </CardLayout>
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProfileSection from "../components/section/ProfileSection";
@@ -8,7 +9,6 @@ const ProfilDetail = () => {
   const { id } = useParams();
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     fetchData();
@@ -38,12 +38,16 @@ const ProfilDetail = () => {
           position: "relative",
         }}
       >
-        <div className={`skeleton h-[30vh] md:h-[40vh] absolute inset-0 ${isLoading ? "visible" : "invisible"}`}></div>
+        <div className={`skeleton h-[30vw] absolute  ${isLoading ? "visible" : "invisible"}`}></div>
 
         {isLoading ? (
-          <div className="skeleton h-[50vh] absolute -bottom-40 left-28 aspect-square rounded-full shrink-0"></div>
+          <div className="skeleton h-[30vw] absolute -bottom-[15vw] left-[10vw] aspect-square rounded-full shrink-0"></div>
         ) : (
-          <img draggable={false} src="https://source.unsplash.com/random/random/?avatar" className=" h-[30vw] p-1 md:p-2 aspect-square rounded-full absolute -bottom-[15vw] left-[10vw] object-cover  bg-neutral shadow-sm" alt="" />
+          <motion.img
+          initial={{opacity:0}}
+          animate={{opacity:1}}
+          transition={{duration:0.3}}
+          draggable={false} src="https://source.unsplash.com/random/random/?avatar" className=" h-[30vw] p-1 md:p-2 aspect-square rounded-full absolute -bottom-[15vw] left-[10vw] object-cover  bg-neutral shadow-sm" alt="" />
         )}
 
         {userData && (
@@ -52,10 +56,16 @@ const ProfilDetail = () => {
               {userData.name.firstname} {userData.name.lastname}
             </p>
 
-            <p className="text-xs md:text-lg lg:text-2xl font-bold text-base-100 absolute right-2 top-2 md:top-0  md:bottom-2 backdrop-blur-sm">+{userData.phone}</p>
+            <p className="text-xs md:text-lg lg:text-2xl font-bold text-base-100 absolute right-2 lg:top-2 top-0  md:bottom-2 bottom-0 backdrop-blur-sm">+{userData.phone}</p>
           </>
         )}
       </div>
+
+      {!userData && (
+        <div className="h-screen flex justify-center items-center">
+          <span className="loading loading-spinner loading-lg text-neutral-content"></span>
+        </div>
+      )}
 
       {userData && (
         <div className="pt-5 pb-10  flex justify-center md:justify-end px-5 md:px-10 w-full ">

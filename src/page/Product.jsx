@@ -3,16 +3,15 @@ import Card from "../components/fragments/CardProduct";
 import Navbar from "../components/fragments/Navbar";
 import CardLayout from "../components/layouts/CardLayout";
 import axios from "axios";
-
-
+import Alert from "../components/elements/Alert.";
+import { motion } from "framer-motion";
 const Product = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [buyStatus, setBuyStatus] = useState({
-    status : false,
-    message : ''
+    status: false,
+    message: "",
   });
-
 
   useEffect(() => {
     fetchData();
@@ -31,18 +30,22 @@ const Product = () => {
 
   return (
     <div className={`bg-neutral  py-10`}>
+      <motion.h1
+      initial={{
+        opacity:0
+    }}
+    animate={{
+        opacity:1
+    }}
+    transition={{
+        duration:1
+    }}
+      className="font-Poppins lg:text-7xl text-5xl text-base-100 text-center mb-5 font-bold ">Produk</motion.h1>
+      {buyStatus.status && <Alert message={buyStatus.message} />}
 
-      <h1 className="font-Poppins lg:text-7xl text-5xl text-base-100 text-center mb-5 font-bold ">Produk</h1>
-        {buyStatus.status && (
-               <div role="alert" className="alert fixed top-22 z-10 w-1/4 left-1/2 -translate-x-1/2">
-               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-               <span>{buyStatus.message}</span>
-             </div>
-              )}
-   
       {loading ? (
         <div className="h-screen flex justify-center items-center">
-          <span className="loading loading-spinner loading-lg text-neutral"></span>
+          <span className="loading loading-spinner loading-lg text-neutral-content"></span>
         </div>
       ) : (
         <CardLayout>

@@ -10,7 +10,7 @@ const Cart = () => {
   const { cart, total } = useCart();
 
   return (
-    <div className="dropdown  lg:dropdown-hover dropdown-end">
+    <div className="dropdown  lg:dropdown-hover font-Poppins dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
         <div className="indicator">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

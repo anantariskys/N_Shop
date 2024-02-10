@@ -1,9 +1,9 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 import { useCart } from "../../hooks/useCart";
-
 const Card = ({ title,  price, src, id, setBuyStatus }) => {
   const{state}=useAuth()
 
@@ -28,9 +28,19 @@ const Card = ({ title,  price, src, id, setBuyStatus }) => {
   };
 
   return (
-    <div className="card w-36 h-64 md:w-56 md:h-80 flex justify-between  bg-base-100 shadow-xl">
+    <motion.div
+    initial={{
+      opacity:0
+  }}
+  animate={{
+      opacity:1
+  }}
+  transition={{
+      duration:0.5
+  }}
+    className="card w-36 h-64 md:w-56 md:h-80 hover:-translate-y-2 duration-300 group ease-in-out flex font-Poppins justify-between  bg-base-100 shadow-xl">
       <figure className="md:px-10 px-3 pt-5 md:pt-10  h-56  items-center  flex">
-        <img src={src} draggable={false} className="rounded-x h-full object-contain " />
+        <img src={src} draggable={false} className="rounded-x group-hover:scale-110 duration-300 ease-in-out h-full object-contain " />
       </figure>
       <div className="card-body   items-center  text-center">
         <h2 className="card-title text-sm md:text-lg line-clamp-2">{title}</h2>
@@ -64,7 +74,7 @@ const Card = ({ title,  price, src, id, setBuyStatus }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
