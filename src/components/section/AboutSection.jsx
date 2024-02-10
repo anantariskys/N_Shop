@@ -61,17 +61,18 @@ const AboutSection = () => {
         </div>
         <div className="lg:w-1/2 relative px-5 ">
           <motion.h1
-            initial={{ opacity: 0, x: 400 }}
+            initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{
               duration: 1,
             }}
+            
             className="text-5xl lg:text-7xl font-bold"
           >
             About
           </motion.h1>
           <motion.div
-          initial={{opacity:0,x:-400}} 
+          initial={{opacity:0,x:-100}} 
     
           transition={{
               duration:1
@@ -82,7 +83,7 @@ const AboutSection = () => {
           }}
           className="w-2/4 h-1 bg-neutral -z-10"></motion.div>
           <motion.p
-          initial={{opacity:0,x:400}} 
+          initial={{opacity:0,x:100}} 
           whileInView={{opacity:1, x:0}}
           transition={{
               duration:1.5
